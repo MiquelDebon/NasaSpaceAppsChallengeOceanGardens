@@ -52,15 +52,18 @@ public class PhytoplanktonService {
         PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
 
         if (answer) {
-            phytoplanktonDto.setCo2Consumed(phytoplanktonDto.getCo2Consumed() + 10);
-            phytoplanktonDto.setHealth(phytoplanktonDto.getHealth() + 5);
+            int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() + 10;
+            int totalHealth = phytoplanktonDto.getHealth() + 5;
+            phytoplanktonDto.setCo2Consumed(Math.min(totalCo2Consumed, 100));
+            phytoplanktonDto.setHealth(Math.min(totalHealth, 100));
             registerAction(phytoplankton);
         } else {
-            phytoplanktonDto.setHealth(phytoplanktonDto.getHealth() - 10);
+            int totalHealth = phytoplanktonDto.getHealth() - 10;
+            phytoplanktonDto.setHealth(Math.max(0, totalHealth));
         }
         return phytoplanktonDto;
     }
-
+    
     /**
      * Checks if the phytoplankton has been without photosynthesis for more than 3 hours
      * and reduces the consumed CO2 accordingly if the condition is met.
@@ -77,7 +80,7 @@ public class PhytoplanktonService {
             LocalDateTime lastAction = phytoplankton.getLastAction();
             LocalDateTime now = LocalDateTime.now();
 
-            if (lastAction != null && Duration.between(lastAction, now).toHours() >= 3) {
+            if (lastAction != null && Duration.between(lastAction, now).toHours() >= 2) {
                 int currentCo2Consumed = phytoplankton.getCo2Consumed();
                 phytoplankton.setCo2Consumed(currentCo2Consumed - 15);
 
@@ -106,9 +109,11 @@ public class PhytoplanktonService {
 
         if(phytoplanktonDto.getReproductionPossibility() == 3) {
             if (answer) {
-                phytoplanktonDto.setCo2Consumed(phytoplanktonDto.getCo2Consumed() - 10);
+                int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() + 10;
+                phytoplanktonDto.setCo2Consumed(Math.min(totalCo2Consumed, 100));
             } else {
-                phytoplanktonDto.setHealth(phytoplanktonDto.getHealth() - 5);
+                int totalHealth = phytoplanktonDto.getHealth() - 5;
+                phytoplanktonDto.setHealth(Math.max(0, totalHealth));
             }
         }
         return phytoplanktonDto;
@@ -131,10 +136,13 @@ public class PhytoplanktonService {
         PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
 
         if (answer) {
-            phytoplanktonDto.setCo2Consumed(phytoplanktonDto.getCo2Consumed() + 10);
-            phytoplanktonDto.setHealth(phytoplanktonDto.getHealth() + 5);
+            int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() + 10;
+            int totalHealth = phytoplanktonDto.getHealth() + 5;
+            phytoplanktonDto.setCo2Consumed(Math.min(totalCo2Consumed, 100));
+            phytoplanktonDto.setHealth(Math.min(totalHealth, 100));
         } else {
-            phytoplanktonDto.setCo2Consumed(phytoplanktonDto.getCo2Consumed() - 5);
+            int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() - 10;
+            phytoplanktonDto.setCo2Consumed(Math.max(0, totalCo2Consumed));
         }
         return phytoplanktonDto;
     }
@@ -157,17 +165,20 @@ public class PhytoplanktonService {
         PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
 
         if (answer) {
+            int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() + 20;
+            phytoplanktonDto.setCo2Consumed(Math.min(totalCo2Consumed, 100));
             phytoplanktonDto.setInSymbiosis(true);
-            phytoplanktonDto.setCo2Consumed(phytoplanktonDto.getCo2Consumed() + 20);
 
             int currentReproductionPoints = phytoplankton.getReproductionPossibility();
 
             if (currentReproductionPoints < 3) {
                 phytoplankton.setReproductionPossibility(currentReproductionPoints + 1);
+            } else {
                 phytoplankton.setReproductionPossibility(0);
             }
         } else {
-            phytoplanktonDto.setHealth(phytoplanktonDto.getHealth() - 10);
+            int totalHealth = phytoplanktonDto.getHealth() - 10;
+            phytoplanktonDto.setHealth(Math.max(0, totalHealth));
         }
         return phytoplanktonDto;
     }

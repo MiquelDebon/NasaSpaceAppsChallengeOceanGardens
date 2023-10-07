@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "98019ac2-4a64-403c-986a-f56e39ed636c",
+		"name": "Phytoplankton",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26628613"
+	},
+	"item": [
+		{
+			"name": "user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1,\r\n  \"Name\": \"John\",\r\n  \"password\": \"secretpass\",\r\n  \"NickName\": \"Johnny\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Phytoplankton",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IdPhyto\": 1,\r\n  \"Name\": \"PhytoPlant\",\r\n  \"Energy\": \"High\",\r\n  \"Breed\": \"Leafy\",\r\n  \"userId\": 101,\r\n  \"symbiosis\": 3,\r\n  \"timeToFeed\": \"2023-09-20T10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/phytoplankton",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"phytoplankton"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

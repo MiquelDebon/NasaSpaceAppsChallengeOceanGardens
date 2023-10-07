@@ -1,4 +1,9 @@
 package com.galacticspacecoders.hackathon.model.dto;
 
-public class userDto {
+
+
+public record userDto (
+    Integer id, String Name, String password, String NickName) {
+
 }
+

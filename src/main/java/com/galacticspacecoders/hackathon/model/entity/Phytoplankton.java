@@ -1,6 +1,5 @@
 package com.galacticspacecoders.hackathon.model.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -22,7 +21,7 @@ public class Phytoplankton {
     private int reproductions;
     private boolean inSymbiosis;
     @CreationTimestamp
-    private LocalDateTime time;
+    private LocalDateTime lastAction;
 
     public Phytoplankton(String name) {
         this.name = name;
@@ -30,6 +29,6 @@ public class Phytoplankton {
         this.health = 100;
         this.reproductions = 0;
         this.inSymbiosis = false;
-        this.time = LocalDateTime.now();
+        this.lastAction = LocalDateTime.now();
     }
 }

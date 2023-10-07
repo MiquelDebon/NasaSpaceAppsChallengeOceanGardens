@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class LoginDTO {
+public class LoginDto {
 
     @Schema(description = "Email of the user to log in", example = "galactic@mail.com")
     private String email;

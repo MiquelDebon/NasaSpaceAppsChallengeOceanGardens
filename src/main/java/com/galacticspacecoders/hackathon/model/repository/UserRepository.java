@@ -1,5 +1,6 @@
 package com.galacticspacecoders.hackathon.model.repository;
 
+import com.galacticspacecoders.hackathon.model.entity.Phytoplankton;
 import com.galacticspacecoders.hackathon.model.entity.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;

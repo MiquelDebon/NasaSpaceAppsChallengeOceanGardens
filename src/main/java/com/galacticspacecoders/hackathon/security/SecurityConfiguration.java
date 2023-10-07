@@ -29,19 +29,19 @@ public class SecurityConfiguration {
                         "/v3/api-docs/**", "/swagger-ui/**",
                         "/images/**", "/css/**", "/static/**", "/error/**", "/img/**", "/json/**",
                         // controller
-                        "/api")
+                        "/auth/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
-                    .loginProcessingUrl("/api/login")
-                     .defaultSuccessUrl("/api/success")
+                    .loginProcessingUrl("/auth/register")
+//                     .defaultSuccessUrl("/api/success")
                     .permitAll()
                     .and()
                 .authenticationProvider(authProvider)
                 .logout()
-                    .logoutUrl("/api/logout")
+                    .logoutUrl("/auth/logout")
                     .permitAll();
         return http.build();
     }

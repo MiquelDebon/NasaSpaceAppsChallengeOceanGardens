@@ -119,7 +119,7 @@ public class PhytoplanktonService {
         }
         return phytoplanktonDto;
     }
-    
+
     private void registerAction(Phytoplankton phytoplankton) {
 
         phytoplankton.setLastAction(LocalDateTime.now());

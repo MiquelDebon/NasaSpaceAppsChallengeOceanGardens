@@ -61,9 +61,10 @@ public class PhytoplanktonService {
             int totalHealth = phytoplanktonDto.getHealth() - 10;
             phytoplanktonDto.setHealth(Math.max(0, totalHealth));
         }
+        phytoplanktonRepo.save(phytoplanktonDtoToEntity(phytoplanktonDto));
         return phytoplanktonDto;
     }
-    
+
     /**
      * Checks if the phytoplankton has been without photosynthesis for more than 3 hours
      * and reduces the consumed CO2 accordingly if the condition is met.
@@ -116,6 +117,7 @@ public class PhytoplanktonService {
                 phytoplanktonDto.setHealth(Math.max(0, totalHealth));
             }
         }
+        phytoplanktonRepo.save(phytoplanktonDtoToEntity(phytoplanktonDto));
         return phytoplanktonDto;
     }
 
@@ -144,6 +146,7 @@ public class PhytoplanktonService {
             int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() - 10;
             phytoplanktonDto.setCo2Consumed(Math.max(0, totalCo2Consumed));
         }
+        phytoplanktonRepo.save(phytoplanktonDtoToEntity(phytoplanktonDto));
         return phytoplanktonDto;
     }
 
@@ -180,6 +183,7 @@ public class PhytoplanktonService {
             int totalHealth = phytoplanktonDto.getHealth() - 10;
             phytoplanktonDto.setHealth(Math.max(0, totalHealth));
         }
+        phytoplanktonRepo.save(phytoplanktonDtoToEntity(phytoplanktonDto));
         return phytoplanktonDto;
     }
 
@@ -190,6 +194,10 @@ public class PhytoplanktonService {
 
     private PhytoplanktonDto phytoplanktonToDto (Phytoplankton phytoplankton) {
         return modelMapper.map(phytoplankton, PhytoplanktonDto.class);
+    }
+
+    private Phytoplankton phytoplanktonDtoToEntity (PhytoplanktonDto phytoplanktonDto) {
+        return modelMapper.map(phytoplanktonDto, Phytoplankton.class);
     }
 
     private User checkUserExist(String userId) {

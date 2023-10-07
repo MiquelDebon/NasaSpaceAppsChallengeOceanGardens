@@ -75,10 +75,12 @@ public class PhytoplanktonService {
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
         PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
 
-        if (answer) {
-            phytoplanktonDto.setCo2Consumed(phytoplanktonDto.getCo2Consumed() - 10);
-        } else {
-            phytoplanktonDto.setHealth(phytoplanktonDto.getHealth() - 5);
+        if(phytoplanktonDto.getReproductionPossibility() == 3) {
+            if (answer) {
+                phytoplanktonDto.setCo2Consumed(phytoplanktonDto.getCo2Consumed() - 10);
+            } else {
+                phytoplanktonDto.setHealth(phytoplanktonDto.getHealth() - 5);
+            }
         }
         return phytoplanktonDto;
     }

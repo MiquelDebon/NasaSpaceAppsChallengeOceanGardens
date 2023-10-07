@@ -14,9 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "PHYTOPLANKTON Application", description = "CRUD OPERATIONS FROM PHYTOPLANKTON")
+@AllArgsConstructor
 @RestController
 @RequestMapping(value= "api/v1")
-@AllArgsConstructor
 public class AppController {
 
     @Autowired

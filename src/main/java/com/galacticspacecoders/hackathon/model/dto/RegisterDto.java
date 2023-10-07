@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 public class RegisterDto {
 
-    @Schema(description = "Name of the user to register", example = "galactic")
-    private String name;
-
     @Schema(description = "Email of the user to register", example = "galactic@mail.com")
     private String email;
+
+    @Schema(description = "Name of the user to register", example = "galactic")
+    private String name;
 
     @Schema(description = "Password of the user to register", example = "password123")
     private String password;

@@ -22,12 +22,12 @@ public class AuthenticationService {
 
     public UserDto registerUser(RegisterDto registerDto) {
         User user = new User(
-            registerDto.getName(),
             registerDto.getEmail(),
+            registerDto.getName(),
             registerDto.getPassword(),
             registerDto.getPhytoplanktonName()
         );
-
+        userRepository.save(user);
         return converter.convertDocumentToDto(user);
     }
 

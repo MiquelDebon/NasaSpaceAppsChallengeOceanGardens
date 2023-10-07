@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+@Tag(name = "PHYTOPLANKTON Authentication")
 @RestController
-@Tag(name = "Authentication Controller")
 @RequestMapping("auth")
 public class userController {
 

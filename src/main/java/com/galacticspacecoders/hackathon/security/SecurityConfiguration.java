@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                         "/v3/api-docs/**", "/swagger-ui/**",
                         "/images/**", "/css/**", "/static/**", "/error/**", "/img/**", "/json/**",
                         // controller
-                        "/api/**")
+                        "/auth/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

@@ -1,5 +1,6 @@
 package com.galacticspacecoders.hackathon.model.services;
 
+import com.galacticspacecoders.hackathon.model.dto.PhytoplanktonDto;
 import com.galacticspacecoders.hackathon.model.entity.Phytoplankton;
 import com.galacticspacecoders.hackathon.model.exception.customExceptions.PhytoplanktonNotFoundException;
 import com.galacticspacecoders.hackathon.model.repository.PhytoplanktonRepository;
@@ -15,20 +16,21 @@ public class PhytoplanktonService {
     @Autowired
     private PhytoplanktonRepository phytoplanktonRepo;
 
-    public boolean photosynthesis(int id, boolean answer) {
+    public PhytoplanktonDto photosynthesis(int id, boolean answer) {
 
         Optional<Phytoplankton> phytoplankton = phytoplanktonRepo.findById(id);
         if(phytoplankton.isPresent()) {
+            //modelMapper
             if (answer) {
                 energy += 10;
                 salud += 5;
-                registrarAccion();
-                return true;
+                registerAction();
+                return phytoDto;
             } else {
                 // El fitoplancton no pudo realizar la fotosíntesis correctamente
                 // Reduce su salud
                 salud -= 10;
-                registrarAccion();
+                //registrarAccion();
                 return false;
             }
         } else {

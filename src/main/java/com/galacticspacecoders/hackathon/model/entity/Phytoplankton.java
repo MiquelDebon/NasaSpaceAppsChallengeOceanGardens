@@ -2,6 +2,7 @@ package com.galacticspacecoders.hackathon.model.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,9 +15,9 @@ import java.time.LocalDateTime;
 public class Phytoplankton {
 
     @Id
-    private int id;
+    private ObjectId id;
     private String name;
-    private int energy;
+    private int co2Consumed;
     private int health;
     private int reproductions;
     private boolean inSymbiosis;
@@ -25,7 +26,7 @@ public class Phytoplankton {
 
     public Phytoplankton(String name) {
         this.name = name;
-        this.energy = 100;
+        this.co2Consumed = 0;
         this.health = 100;
         this.reproductions = 0;
         this.inSymbiosis = false;

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class RegisterDTO {
+public class RegisterDto {
 
     @Schema(description = "Name of the user to register", example = "galactic")
     private String name;

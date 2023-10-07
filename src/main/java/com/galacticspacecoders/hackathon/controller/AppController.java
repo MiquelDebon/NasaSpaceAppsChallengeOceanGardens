@@ -8,15 +8,13 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @Tag(name = "PHYTOPLANKTON Application", description = "CRUD OPERATIONS FROM PHYTOPLANKTON")
 @AllArgsConstructor
 @RestController
@@ -26,25 +24,24 @@ public class AppController {
     @Autowired
     private final PhytoplanktonService phytoplanktonService;
 
-
-    @Operation(
-            summary = "Feed check endpoint",
-            description = "Description: This method check if the player is feeding the phytoplankton",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Phytoplankton well fed",
-                            content = @Content),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "INTERNAL_ERROR",
-                            content = @Content)
-            }
-    )
-    @GetMapping("/missingPhotosynthesis") //método aleatorio
-    public ResponseEntity<?> lackOfPhotosynthesis(@RequestBody PhytoplanktonDto phytoplanktonDto) {
-        return new ResponseEntity<>(phytoplanktonService.tooMuchTimeWithoutPhotosynthesis(), HttpStatus.OK);
-    }
+//    @Operation(
+//            summary = "Feed check endpoint",
+//            description = "Description: This method check if the player is feeding the phytoplankton",
+//            responses = {
+//                    @ApiResponse(
+//                            responseCode = "200",
+//                            description = "Phytoplankton well fed",
+//                            content = @Content),
+//                    @ApiResponse(
+//                            responseCode = "500",
+//                            description = "INTERNAL_ERROR",
+//                            content = @Content)
+//            }
+//    )
+//    @GetMapping("/missingPhotosynthesis") //método aleatorio
+//    public ResponseEntity<?> lackOfPhotosynthesis() {
+//        return new ResponseEntity<>(phytoplanktonService.tooMuchTimeWithoutPhotosynthesis(), HttpStatus.OK);
+//    }
 
     @Operation(
             summary = "Game action endpoint",
@@ -62,6 +59,8 @@ public class AppController {
     )
     @PostMapping("/action")
     public ResponseEntity<?> performAction(@RequestBody GameDto gameDto) {
+
+        log.info(gameDto.toString());
         return new ResponseEntity<>(phytoplanktonService.fromFrontend(gameDto), HttpStatus.OK);
     }
 

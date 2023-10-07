@@ -26,11 +26,11 @@ public class PhytoplanktonService {
     private ModelMapper modelMapper;
 
     public PhytoplanktonDto fromFrontend(GameDto gameDto) {
-        return switch (gameDto.getActionId()) {
-            case 1 -> photosynthesis(gameDto.getUserId(), gameDto.getAnswer());
-            case 2 -> reproduce(gameDto.getUserId(), gameDto.getAnswer());
-            case 3 -> migrate(gameDto.getUserId(), gameDto.getAnswer());
-            case 4 -> group(gameDto.getUserId(), gameDto.getAnswer());
+        return switch (gameDto.getAction()) {
+            case 1 -> photosynthesis(gameDto.getId(), gameDto.getAnswer());
+            case 2 -> reproduce(gameDto.getId(), gameDto.getAnswer());
+            case 3 -> migrate(gameDto.getId(), gameDto.getAnswer());
+            case 4 -> group(gameDto.getId(), gameDto.getAnswer());
             default -> null;
         };
     }
@@ -49,20 +49,22 @@ public class PhytoplanktonService {
     public PhytoplanktonDto photosynthesis(String userId, boolean answer) {
 
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
-        PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
+        User user = checkUserExist(userId);
 
         if (answer) {
-            int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() + 10;
-            int totalHealth = phytoplanktonDto.getHealth() + 5;
-            phytoplanktonDto.setCo2Consumed(Math.min(totalCo2Consumed, 100));
-            phytoplanktonDto.setHealth(Math.min(totalHealth, 100));
+            int totalCo2Consumed = phytoplankton.getCo2Consumed() + 10;
+            int totalHealth = phytoplankton.getHealth() + 10;
+            phytoplankton.setCo2Consumed(Math.min(totalCo2Consumed, 100));
+            phytoplankton.setHealth(Math.min(totalHealth, 100));
+            user.setPhytoplankton(phytoplankton);
             registerAction(phytoplankton);
         } else {
-            int totalHealth = phytoplanktonDto.getHealth() - 10;
-            phytoplanktonDto.setHealth(Math.max(0, totalHealth));
+            int totalHealth = phytoplankton.getHealth() - 10;
+            phytoplankton.setHealth(Math.max(0, totalHealth));
+            user.setPhytoplankton(phytoplankton);
         }
-        phytoplanktonRepo.save(phytoplanktonDtoToEntity(phytoplanktonDto));
-        return phytoplanktonDto;
+        userRepo.save(user);
+        return phytoplanktonToDto(phytoplankton);
     }
 
     /**
@@ -75,17 +77,19 @@ public class PhytoplanktonService {
     public PhytoplanktonDto tooMuchTimeWithoutPhotosynthesis() {
 
         Phytoplankton phytoplankton = phytoplanktonRepo.findAll().stream().findFirst().orElse(null);
+        User user = userRepo.findByPhytoplanktonId(phytoplankton.getId()).orElseThrow(UserNotFoundException::new);
 
         if (phytoplankton != null) {
 
             LocalDateTime lastAction = phytoplankton.getLastAction();
             LocalDateTime now = LocalDateTime.now();
 
-            if (lastAction != null && Duration.between(lastAction, now).toHours() >= 2) {
+            if (lastAction != null && Duration.between(lastAction, now).toSeconds() >= 2) {
                 int currentCo2Consumed = phytoplankton.getCo2Consumed();
                 phytoplankton.setCo2Consumed(currentCo2Consumed - 15);
 
-                phytoplanktonRepo.save(phytoplankton);
+                user.setPhytoplankton(phytoplankton);
+                userRepo.save(user);
             }
         }
 
@@ -106,19 +110,24 @@ public class PhytoplanktonService {
     public PhytoplanktonDto reproduce (String userId, boolean answer) {
 
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
-        PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
+        User user = checkUserExist(userId);
 
-        if(phytoplanktonDto.getReproductionPossibility() == 3) {
+        if(phytoplankton.getReproductionPossibility() >= 3) {
             if (answer) {
-                int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() + 10;
-                phytoplanktonDto.setCo2Consumed(Math.min(totalCo2Consumed, 100));
+                phytoplankton.setReproductionPossibility(0);
+                user.setPhytoplankton(phytoplankton);
+                userRepo.save(user);
+                int totalCo2Consumed = phytoplankton.getCo2Consumed() + 10;
+                phytoplankton.setCo2Consumed(Math.min(totalCo2Consumed, 100));
+
             } else {
-                int totalHealth = phytoplanktonDto.getHealth() - 5;
-                phytoplanktonDto.setHealth(Math.max(0, totalHealth));
+                int totalHealth = phytoplankton.getHealth() - 5;
+                phytoplankton.setHealth(Math.max(0, totalHealth));
             }
         }
-        phytoplanktonRepo.save(phytoplanktonDtoToEntity(phytoplanktonDto));
-        return phytoplanktonDto;
+        user.setPhytoplankton(phytoplankton);
+        userRepo.save(user);
+        return phytoplanktonToDto(phytoplankton);
     }
 
     /**
@@ -135,19 +144,21 @@ public class PhytoplanktonService {
     public PhytoplanktonDto migrate (String userId, boolean answer) {
 
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
-        PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
+        User user = checkUserExist(userId);
 
         if (answer) {
-            int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() + 10;
-            int totalHealth = phytoplanktonDto.getHealth() + 5;
-            phytoplanktonDto.setCo2Consumed(Math.min(totalCo2Consumed, 100));
-            phytoplanktonDto.setHealth(Math.min(totalHealth, 100));
+            int totalCo2Consumed = phytoplankton.getCo2Consumed() + 10;
+            int totalHealth = phytoplankton.getHealth() + 5;
+            phytoplankton.setCo2Consumed(Math.min(totalCo2Consumed, 100));
+            phytoplankton.setHealth(Math.min(totalHealth, 100));
         } else {
-            int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() - 10;
-            phytoplanktonDto.setCo2Consumed(Math.max(0, totalCo2Consumed));
+            int totalCo2Consumed = phytoplankton.getCo2Consumed() - 10;
+            phytoplankton.setCo2Consumed(Math.max(0, totalCo2Consumed));
         }
-        phytoplanktonRepo.save(phytoplanktonDtoToEntity(phytoplanktonDto));
-        return phytoplanktonDto;
+
+        user.setPhytoplankton(phytoplankton);
+        userRepo.save(user);
+        return phytoplanktonToDto(phytoplankton);
     }
 
     /**
@@ -165,30 +176,30 @@ public class PhytoplanktonService {
      */
     public PhytoplanktonDto group(String userId, boolean answer) {
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
-        PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
+        User user = checkUserExist(userId);
 
         if (answer) {
-            int totalCo2Consumed = phytoplanktonDto.getCo2Consumed() + 20;
-            phytoplanktonDto.setCo2Consumed(Math.min(totalCo2Consumed, 100));
-            phytoplanktonDto.setInSymbiosis(true);
+            int totalCo2Consumed = phytoplankton.getCo2Consumed() + 20;
+            phytoplankton.setCo2Consumed(Math.min(totalCo2Consumed, 100));
+            phytoplankton.setInSymbiosis(true);
 
             int currentReproductionPoints = phytoplankton.getReproductionPossibility();
 
             if (currentReproductionPoints < 3) {
                 phytoplankton.setReproductionPossibility(currentReproductionPoints + 1);
-            } else {
-                phytoplankton.setReproductionPossibility(0);
+                user.setPhytoplankton(phytoplankton);
+                userRepo.save(user);
             }
         } else {
-            int totalHealth = phytoplanktonDto.getHealth() - 10;
-            phytoplanktonDto.setHealth(Math.max(0, totalHealth));
+            int totalHealth = phytoplankton.getHealth() - 10;
+            phytoplankton.setHealth(Math.max(0, totalHealth));
         }
-        phytoplanktonRepo.save(phytoplanktonDtoToEntity(phytoplanktonDto));
-        return phytoplanktonDto;
+        user.setPhytoplankton(phytoplankton);
+        userRepo.save(user);
+        return phytoplanktonToDto(phytoplankton);
     }
 
     private void registerAction(Phytoplankton phytoplankton) {
-
         phytoplankton.setLastAction(LocalDateTime.now());
     }
 
@@ -196,9 +207,6 @@ public class PhytoplanktonService {
         return modelMapper.map(phytoplankton, PhytoplanktonDto.class);
     }
 
-    private Phytoplankton phytoplanktonDtoToEntity (PhytoplanktonDto phytoplanktonDto) {
-        return modelMapper.map(phytoplanktonDto, Phytoplankton.class);
-    }
 
     private User checkUserExist(String userId) {
         ObjectId objectId = new ObjectId(userId);

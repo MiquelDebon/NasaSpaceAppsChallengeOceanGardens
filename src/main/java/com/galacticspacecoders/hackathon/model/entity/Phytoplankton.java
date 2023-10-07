@@ -3,6 +3,7 @@ package com.galacticspacecoders.hackathon.model.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
@@ -12,6 +13,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Document(collection = "phytoplankton")
 public class Phytoplankton {

@@ -11,6 +11,8 @@ public class GameDto {
     private ObjectId userId;
     private boolean answer;
 
+    ObjectId usees = new ObjectId("dedede");
+
     public ObjectId getActionId() {
         return actionId;
     }

@@ -68,4 +68,6 @@ public class PhytoplanktonService {
     private PhytoplanktonDto phytoplanktonToDto (Phytoplankton phytoplankton) {
         return modelMapper.map(phytoplankton, PhytoplanktonDto.class);
     }
+
+
 }

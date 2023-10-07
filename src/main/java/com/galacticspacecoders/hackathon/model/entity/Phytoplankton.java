@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
 @Data
 @Document(collection = "phytoplankton")
 public class Phytoplankton {
@@ -39,7 +38,6 @@ public class Phytoplankton {
     @Schema(description = "Last time the phytoplankton eaten", example = "2022-01-01 00:00:00")
     @CreationTimestamp
     private LocalDateTime lastAction;
-
     public Phytoplankton(String name) {
         this.name = name;
         this.co2Consumed = 0;

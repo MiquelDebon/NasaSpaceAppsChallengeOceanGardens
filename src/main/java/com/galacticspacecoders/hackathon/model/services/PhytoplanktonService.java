@@ -6,6 +6,7 @@ import com.galacticspacecoders.hackathon.model.repository.PhytoplanktonRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -34,5 +35,10 @@ public class PhytoplanktonService {
             throw new PhytoplanktonNotFoundException();
         }
 
+    }
+
+    private void registerAction(Phytoplankton phytoplankton) {
+
+        phytoplankton.setLastAction(LocalDateTime.now());
     }
 }

@@ -32,12 +32,12 @@ public class AuthenticationService {
     }
 
 
-    public User authenticate (LoginDto loginDto){
+    public UserDto authenticate (LoginDto loginDto){
         Optional<User> user = userRepository.findByEmailAndPassword(
                 loginDto.getEmail(),
                 loginDto.getPassword());
         if(user.isPresent()){
-            return user.get();
+            return converter.convertDocumentToDto(user.get());
         }else{
             throw new UserNotFoundException();
         }

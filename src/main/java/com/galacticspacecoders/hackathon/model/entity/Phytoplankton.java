@@ -19,7 +19,7 @@ public class Phytoplankton {
     private String name;
     private int co2Consumed;
     private int health;
-    private int reproductions;
+    private int reproductionPossibility;
     private boolean inSymbiosis;
     @CreationTimestamp
     private LocalDateTime lastAction;
@@ -28,7 +28,7 @@ public class Phytoplankton {
         this.name = name;
         this.co2Consumed = 0;
         this.health = 100;
-        this.reproductions = 0;
+        this.reproductionPossibility = 0;
         this.inSymbiosis = false;
         this.lastAction = LocalDateTime.now();
     }

@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 public class PhytoplanktonDto {
 
     private String name;
-    private int energy;
+    private int co2Consumed;
     private int health;
-    private int reproductions;
+    private int reproductionPossibility;
     private boolean inSymbiosis;
 
 }

@@ -52,6 +52,14 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public User(String nickname, String email, String password, String phytoplanktonName) {
+        this.nickname = nickname;
+        this.email = email;
+        this.password = password;
+        role = Role.USER;
+        phytoplankton = new Phytoplankton(phytoplanktonName);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

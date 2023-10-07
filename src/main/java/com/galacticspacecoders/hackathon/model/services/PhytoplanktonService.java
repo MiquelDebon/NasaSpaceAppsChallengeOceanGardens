@@ -35,6 +35,17 @@ public class PhytoplanktonService {
         };
     }
 
+    /**
+     *  Simulates photosynthesis process for the given user's phytoplankton and updates its properties.
+     *
+     *  @param userId The unique identifier of the user.
+     *  @param answer A boolean indicating whether the user confirms the photosynthesis process.
+     *                If true, the phytoplankton's CO2 consumption and health will increase.
+     *                If false, the phytoplankton's health will decrease.
+     *  @return A {@link PhytoplanktonDto} object representing the updated properties of the phytoplankton
+     *          after the photosynthesis process.
+     *  @throws UserNotFoundException If the specified user is not found
+     */
     public PhytoplanktonDto photosynthesis(String userId, boolean answer) {
 
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
@@ -50,12 +61,19 @@ public class PhytoplanktonService {
         return phytoplanktonDto;
     }
 
+    /**
+     * Checks if the phytoplankton has been without photosynthesis for more than 3 hours
+     * and reduces the consumed CO2 accordingly if the condition is met.
+     *
+     * @return A {@link PhytoplanktonDto} object representing the updated properties of the phytoplankton
+     *         after adjusting the CO2 consumption.
+     */
     public PhytoplanktonDto tooMuchTimeWithoutPhotosynthesis() {
-        // Utiliza el repositorio de Phytoplankton para obtener el único fitoplancton
+
         Phytoplankton phytoplankton = phytoplanktonRepo.findAll().stream().findFirst().orElse(null);
 
         if (phytoplankton != null) {
-            // Realiza la lógica para reducir el CO2 consumido si han pasado 3 horas
+
             LocalDateTime lastAction = phytoplankton.getLastAction();
             LocalDateTime now = LocalDateTime.now();
 
@@ -70,6 +88,17 @@ public class PhytoplanktonService {
         return phytoplanktonToDto(phytoplankton);
     }
 
+    /**
+     * Simulates the reproduction process of phytoplankton based on user input and updates its properties.
+     *
+     * @param userId The unique identifier of the user.
+     * @param answer A boolean indicating whether the user confirms the reproduction process.
+     *               If true, the phytoplankton's CO2 consumption will decrease.
+     *               If false, the phytoplankton's health will decrease.
+     * @return A {@link PhytoplanktonDto} object representing the updated properties of the phytoplankton
+     *         after the reproduction process.
+     * @throws UserNotFoundException If the specified user is not found.
+     */
     public PhytoplanktonDto reproduce (String userId, boolean answer) {
 
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
@@ -85,6 +114,17 @@ public class PhytoplanktonService {
         return phytoplanktonDto;
     }
 
+    /**
+     * Simulates the migration process of phytoplankton based on user input and updates its properties.
+     *
+     * @param userId The unique identifier of the user.
+     * @param answer A boolean indicating whether the user confirms the migration process.
+     *               If true, the phytoplankton's CO2 consumption and health will increase.
+     *               If false, the phytoplankton's CO2 consumption will decrease.
+     * @return A {@link PhytoplanktonDto} object representing the updated properties of the phytoplankton
+     *         after the migration process.
+     * @throws UserNotFoundException If the specified user is not found.
+     */
     public PhytoplanktonDto migrate (String userId, boolean answer) {
 
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
@@ -99,6 +139,19 @@ public class PhytoplanktonService {
         return phytoplanktonDto;
     }
 
+    /**
+     * Simulates the grouping process of phytoplankton based on user input and updates its properties.
+     * If the user confirms the grouping, the phytoplankton enters symbiosis, increases CO2 consumption,
+     * and earns reproduction points. If not, the phytoplankton's health decreases.
+     *
+     * @param userId The unique identifier of the user.
+     * @param answer A boolean indicating whether the user confirms the grouping process.
+     *               If true, the phytoplankton enters symbiosis, increases CO2 consumption, and earns
+     *               reproduction points. If false, the phytoplankton's health decreases.
+     * @return A {@link PhytoplanktonDto} object representing the updated properties of the phytoplankton
+     *         after the grouping process.
+     * @throws UserNotFoundException If the specified user is not found.
+     */
     public PhytoplanktonDto group(String userId, boolean answer) {
         Phytoplankton phytoplankton = checkUserExist(userId).getPhytoplankton();
         PhytoplanktonDto phytoplanktonDto = phytoplanktonToDto(phytoplankton);
@@ -107,13 +160,10 @@ public class PhytoplanktonService {
             phytoplanktonDto.setInSymbiosis(true);
             phytoplanktonDto.setCo2Consumed(phytoplanktonDto.getCo2Consumed() + 20);
 
-            // Aumentar el contador de puntos de reproducción
             int currentReproductionPoints = phytoplankton.getReproductionPossibility();
 
             if (currentReproductionPoints < 3) {
-                // Aumentar posibilidad de reproducción
                 phytoplankton.setReproductionPossibility(currentReproductionPoints + 1);
-                // Reiniciar el contador
                 phytoplankton.setReproductionPossibility(0);
             }
         } else {
@@ -121,7 +171,7 @@ public class PhytoplanktonService {
         }
         return phytoplanktonDto;
     }
-    
+
     private void registerAction(Phytoplankton phytoplankton) {
 
         phytoplankton.setLastAction(LocalDateTime.now());

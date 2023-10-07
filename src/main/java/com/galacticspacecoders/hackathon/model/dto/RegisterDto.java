@@ -18,4 +18,7 @@ public class RegisterDto {
 
     @Schema(description = "Password of the user to register", example = "password123")
     private String password;
+
+    @Schema(description = "Name of the phytoplankton", example = "phyto")
+    private String phytoplanktonName;
 }

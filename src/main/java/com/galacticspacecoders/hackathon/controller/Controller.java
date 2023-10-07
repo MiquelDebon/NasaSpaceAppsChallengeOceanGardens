@@ -10,10 +10,10 @@ import com.galacticspacecoders.hackathon.model.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
 @RestController
 @RequestMapping(value= "api/v1/user")
 @AllArgsConstructor
@@ -26,22 +26,25 @@ public class Controller {
 
     @PostMapping("/createUser")
     @ResponseStatus
-    public ResponseEntity<UserRespond> createUser(@RequestBody RegisterDto registerDto) {
+    public ResponseEntity<String> createUser(@RequestBody RegisterDto registerDto) {
         //todo create save for USER in service
-        return userService.save(registerDto);
+        userService.save(registerDto);
+        return new ResponseEntity(registerDto, null, HttpStatus.CREATED);
     }
 
     @PostMapping("/createPhytoplankton")
     @ResponseStatus
-    public ResponseEntity<PhytoplanktonRespond> createPhytoplankton(@RequestBody PhytoplanktonDto phytoplanktonDto) {
+    public ResponseEntity<String> createPhytoplankton(@RequestBody PhytoplanktonDto phytoplanktonDto) {
         //todo create save for PHYTOPLANKTON in service
-        return phytoplanktonService.save(phytoplanktonDto);
+        phytoplanktonService.save(phytoplanktonDto);
+        return new ResponseEntity(phytoplanktonDto, null, HttpStatus.CREATED);
     }
 
     @PostMapping("/createGame")
     @ResponseStatus
     public void fromFrontendGame(@RequestBody GameDto gameDto) {
-        //todo create game for Game in service
+        //todo create method FROMFRONTEND in service
         phytoplanktonService.fromFrontend(gameDto);
     }
+
 }

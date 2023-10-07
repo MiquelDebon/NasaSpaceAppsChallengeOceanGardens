@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "PHYTOPLANKTON Application", description = "CRUD OPERATIONS FROM PHYTOPLANKTON")
@@ -36,9 +37,8 @@ public class Controller {
     )
     @PostMapping("/createGame")
     @ResponseStatus
-    public void fromFrontendGame(@RequestBody GameDto gameDto) {
-        //todo create method FROMFRONTEND in service
-        phytoplanktonService.fromFrontend(gameDto);
+    public ResponseEntity<?> performAction(@RequestBody GameDto gameDto) {
+        return new ResponseEntity<>(phytoplanktonService.fromFrontend(gameDto), HttpStatus.OK);
     }
 
 }

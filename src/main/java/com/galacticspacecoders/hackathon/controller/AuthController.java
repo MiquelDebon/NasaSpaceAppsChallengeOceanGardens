@@ -56,7 +56,7 @@ public class AuthController {
                             content = @Content)
             }
     )
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticate(
             @RequestBody LoginDto request
     ){
@@ -79,8 +79,8 @@ public class AuthController {
             }
     )
     @PostMapping("/logout")
-    public ResponseEntity<?> logout(){
-        return ResponseEntity.ok().body("Log out Successfully");
+    public ResponseEntity<?> logout(@RequestBody String id){
+        return ResponseEntity.ok(service.logout(id));
     }
 
 

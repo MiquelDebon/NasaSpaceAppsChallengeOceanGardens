@@ -30,9 +30,9 @@ public class User implements UserDetails {
     private ObjectId id;
 
     @NotBlank
-    @Field(name = "nickname")
-    @Schema(description = "Nickname of the user", example = "galactic")
-    private String nickname;
+    @Field(name = "name")
+    @Schema(description = "Name of the user", example = "galactic")
+    private String name;
 
     @Email
     @NotBlank
@@ -52,8 +52,8 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User(String nickname, String email, String password, String phytoplanktonName) {
-        this.nickname = nickname;
+    public User(String name, String email, String password, String phytoplanktonName) {
+        this.name = name;
         this.email = email;
         this.password = password;
         role = Role.USER;

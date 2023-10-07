@@ -7,6 +7,7 @@ import com.galacticspacecoders.hackathon.model.entity.User;
 import com.galacticspacecoders.hackathon.model.exception.customExceptions.UserNotFoundException;
 import com.galacticspacecoders.hackathon.model.helper.UserDocumentToDtoConverter;
 import com.galacticspacecoders.hackathon.model.repository.UserRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,9 @@ public class AuthenticationService {
         }
     }
 
-
+    public UserDto logout(String id){
+        User user = userRepository.findById(new ObjectId(id)).orElseThrow(UserNotFoundException::new);
+        return converter.convertDocumentToDto(user);
+    }
 
 }

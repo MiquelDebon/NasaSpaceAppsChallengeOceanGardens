@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -29,20 +28,11 @@ public class SecurityConfiguration {
                         "/v3/api-docs/**", "/swagger-ui/**",
                         "/images/**", "/css/**", "/static/**", "/error/**", "/img/**", "/json/**",
                         // controller
-                        "/auth/**")
+                        "/auth/**",
+                        "/api/**")
                 .permitAll()
                 .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                    .loginProcessingUrl("/auth/register")
-//                     .defaultSuccessUrl("/api/success")
-                    .permitAll()
-                    .and()
-                .authenticationProvider(authProvider)
-                .logout()
-                    .logoutUrl("/auth/logout")
-                    .permitAll();
+                .authenticated();
         return http.build();
     }
 

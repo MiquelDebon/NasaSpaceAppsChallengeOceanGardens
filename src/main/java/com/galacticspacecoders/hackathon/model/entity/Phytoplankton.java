@@ -2,7 +2,7 @@ package com.galacticspacecoders.hackathon.model.entity;
 
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
@@ -31,7 +31,7 @@ public class Phytoplankton {
     private int health;
 
     @Schema(description = "Reproductions of the phytoplankton", example = "0")
-    private int reproductions;
+    private int reproductionPossibility;
 
     @Schema(description = "In symbiosis of the phytoplankton", example = "false")
     private boolean inSymbiosis;
@@ -44,7 +44,7 @@ public class Phytoplankton {
         this.name = name;
         this.co2Consumed = 0;
         this.health = 100;
-        this.reproductions = 0;
+        this.reproductionPossibility = 0;
         this.inSymbiosis = false;
         this.lastAction = LocalDateTime.now();
     }

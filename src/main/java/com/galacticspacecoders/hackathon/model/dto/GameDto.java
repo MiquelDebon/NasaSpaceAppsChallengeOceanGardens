@@ -7,15 +7,15 @@ import org.bson.types.ObjectId;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GameDto {
-    private ObjectId actionId;
-    private ObjectId userId;
+    private int actionId;
+    private String userId;
     private boolean answer;
 
-    public ObjectId getActionId() {
+    public int getActionId() {
         return actionId;
     }
 
-    public ObjectId getUserId() {
+    public String getUserId() {
         return userId;
     }
 

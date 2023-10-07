@@ -7,6 +7,7 @@ import com.galacticspacecoders.hackathon.model.services.PhytoplanktonService;
 import com.galacticspacecoders.hackathon.model.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,29 +20,27 @@ public class Controller {
 
     private final UserService userService;
 
+    @Autowired
     private final PhytoplanktonService phytoplanktonService;
 
     @PostMapping("/createUser")
     @ResponseStatus
     public ResponseEntity<String> createUser(@RequestBody RegisterDto registerDto) {
         //todo create save for USER in service
-        userService.save(registerDto);
+        //userService.save(registerDto);
         return new ResponseEntity(registerDto, null, HttpStatus.CREATED);
     }
 
-    @PostMapping("/createPhytoplankton")
+    @GetMapping("/missingPhotosynthesis") //método aleatorio
     @ResponseStatus
-    public ResponseEntity<String> createPhytoplankton(@RequestBody PhytoplanktonDto phytoplanktonDto) {
-        //todo create save for PHYTOPLANKTON in service
-        phytoplanktonService.save(phytoplanktonDto);
-        return new ResponseEntity(phytoplanktonDto, null, HttpStatus.CREATED);
+    public ResponseEntity<PhytoplanktonDto> lackOfPhotosynthesis(@RequestBody PhytoplanktonDto phytoplanktonDto) {
+        return new ResponseEntity<>(phytoplanktonService.tooMuchTimeWithoutPhotosynthesis(), HttpStatus.OK);
     }
 
-    @PostMapping("/createGame")
+    @PostMapping("/action")
     @ResponseStatus
-    public void fromFrontendGame(@RequestBody GameDto gameDto) {
-        //todo create method FROMFRONTEND in service
-        phytoplanktonService.fromFrontend(gameDto);
+    public ResponseEntity<PhytoplanktonDto> performAction(@RequestBody GameDto gameDto) {
+        return new ResponseEntity<>(phytoplanktonService.fromFrontend(gameDto), HttpStatus.OK);
     }
 
 }

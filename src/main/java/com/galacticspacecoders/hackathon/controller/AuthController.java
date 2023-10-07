@@ -40,8 +40,7 @@ public class AuthController {
     public ResponseEntity<?> register(
             @RequestBody RegisterDto registerDto
     ){
-        service.registerUser(registerDto);
-        return ResponseEntity.ok().body("User registered successfully");
+        return ResponseEntity.ok().body(service.registerUser(registerDto));
     }
 
 

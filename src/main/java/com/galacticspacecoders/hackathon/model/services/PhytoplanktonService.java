@@ -25,14 +25,14 @@ public class PhytoplanktonService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public void fromFrontend(GameDto gameDto) {
-
-        switch (gameDto.getActionId()) {
+    public PhytoplanktonDto fromFrontend(GameDto gameDto) {
+        return switch (gameDto.getActionId()) {
             case 1 -> photosynthesis(gameDto.getUserId(), gameDto.getAnswer());
             case 2 -> reproduce(gameDto.getUserId(), gameDto.getAnswer());
             case 3 -> migrate(gameDto.getUserId(), gameDto.getAnswer());
             case 4 -> group(gameDto.getUserId(), gameDto.getAnswer());
-        }
+            default -> null;
+        };
     }
 
     public PhytoplanktonDto photosynthesis(String userId, boolean answer) {
@@ -49,7 +49,6 @@ public class PhytoplanktonService {
         }
         return phytoplanktonDto;
     }
-
 
     public PhytoplanktonDto tooMuchTimeWithoutPhotosynthesis() {
         // Utiliza el repositorio de Phytoplankton para obtener el único fitoplancton
@@ -70,7 +69,6 @@ public class PhytoplanktonService {
 
         return phytoplanktonToDto(phytoplankton);
     }
-
 
     public PhytoplanktonDto reproduce (String userId, boolean answer) {
 
@@ -121,8 +119,7 @@ public class PhytoplanktonService {
         }
         return phytoplanktonDto;
     }
-
-
+    
     private void registerAction(Phytoplankton phytoplankton) {
 
         phytoplankton.setLastAction(LocalDateTime.now());

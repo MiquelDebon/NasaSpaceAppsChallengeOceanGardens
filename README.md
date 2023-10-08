@@ -1,4 +1,7 @@
-# 🌊 La Aventura del Fitoplancton
+# 🌊 The Phytoplankton Adventure
+<p float="center">
+   <img src="src/main/resources/static/phyto.gif" width="400" />
+</p>
 
 ### 🌎 Context
 

@@ -11,10 +11,10 @@ public class GameDto {
     @Schema(description = "Identification of the user playing", example = "643d909f15da8348ee4805c1")
     private String id;
 
-    @Schema(description = "Identification of the functionality to play", example = 1)
+    @Schema(description = "Identification of the functionality to play", example = "1")
     private int action;
 
-    @Schema(description = "Response of the operation", example = true)
+    @Schema(description = "Response of the operation", example = "true")
     private boolean answer;
 
     public int getAction() {

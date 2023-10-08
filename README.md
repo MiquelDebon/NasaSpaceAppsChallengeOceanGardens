@@ -80,9 +80,9 @@ To get started with the project, follow the steps below:
 
 ### 🤝 Team
 Solution made by **Galactic Space Coders 🛰️**:
-- [👷 Miquel Debon](https://github.com/MiquelDebon)
+- [👷‍♂️ Miquel Debon](https://github.com/MiquelDebon)
 - [👩‍🔬 Isis Gómez](https://github.com/Isisgldev)
-- [👷‍ Montse Liz](https://github.com/montseliz)
+- [👷‍♀️ Montse Liz](https://github.com/montseliz)
 - [👨‍🎨 Roger Minard](https://github.com/roger-mir-min)
-- [👷‍ Anna Santasusana](https://github.com/AnnaSantasusana)
-- [👷 Anderson Zolis](https://github.com/anderson92zolis)
+- [👷‍♀️ Anna Santasusana](https://github.com/AnnaSantasusana)
+- [👷‍♂️ Anderson Zolis](https://github.com/anderson92zolis)

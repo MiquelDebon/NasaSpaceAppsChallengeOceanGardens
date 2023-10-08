@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@Tag(name = "PHYTOPLANKTON Application", description = "CRUD OPERATIONS FROM PHYTOPLANKTON")
+@Tag(name = "The Phytoplankton Adventure Application", description = "CRUD Operations from Ocean Gardens Server")
 @AllArgsConstructor
 @RestController
 @RequestMapping(value= "api/v1")

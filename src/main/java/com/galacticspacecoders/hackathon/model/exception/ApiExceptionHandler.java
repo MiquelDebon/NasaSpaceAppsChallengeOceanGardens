@@ -72,7 +72,6 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
     }
 
-
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> internalErroException(Exception ex){
         Map<String, String> mapError = new HashMap<>();

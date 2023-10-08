@@ -3,6 +3,7 @@ package com.galacticspacecoders.hackathon.model.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Phytoplankton {
     @Schema(description = "Identifier of the phytoplankton", example = "643d909f15da8348ee4805c1")
     private ObjectId id;
 
+    @NotBlank
     @Schema(description = "Name of the phytoplankton", example = "Manolo")
     private String name;
 

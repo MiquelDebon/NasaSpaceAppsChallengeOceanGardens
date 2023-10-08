@@ -1,15 +1,15 @@
-# La Aventura del Fitoplancton
+# 🌊 La Aventura del Fitoplancton
 
-### Context
+### 🌎 Context
 
 Phytoplankton Adventure is an exciting app that immerses you in the fascinating world of phytoplankton. In this game, you take on the role of a virtual phytoplankton keeper, exploring its growth and learning about its essential role in the oceans. You will also discover how scientists study phytoplankton from space and their impact on the balance of the oceans.
 
 This project was created by the Galactic Space Coders team as part of the NASA International Space Apps Challenge, with the aim of educating and raising awareness about the importance of phytoplankton, the oceans and climate change.
 
-### Technology stack
+### ️💻 Technology stack
 
 The project has been developed using the following technologies:
- //BACKEND
+#### BACKEND:
 - Java 17
 - Spring Boot 3.0.5
 - MongoDB for data persistence
@@ -20,7 +20,16 @@ The project has been developed using the following technologies:
 - Lombok for code simplification
 - Spring Boot Devtools for development
 
-### Installation
+#### FRONTEND:
+- Angular 16
+- TypeScript
+- JavaScript
+- HTML
+- CSS
+- Tailwind
+
+
+### 🚀 1 - Installation Backend
 
 To get started with the project, follow the steps below:
 
@@ -32,7 +41,7 @@ To get started with the project, follow the steps below:
 
 3. Navigate to the project directory:
 
-    cd NasaSpaceAppsChallenge
+        cd NasaSpaceAppsChallenge
 
 4. Create the "galacticspacecoders" database and the "users" collection in MongoDB.
 
@@ -44,20 +53,36 @@ To get started with the project, follow the steps below:
 
          gradle bootRun
       
-//7. La aplicación estará disponible en http://localhost:8080. Puedes acceder a los puntos finales y explorar la funcionalidad utilizando herramientas como Swagger UI o tu herramienta de prueba de API preferida.
+7. The application will be available at http://localhost:8080. You can access endpoints and explore functionality using tools like Swagger UI or your favorite API testing tool.
 
-### Objectives
+### 🚀 2 - Installation Frontend
+To get started with the project, follow the steps below:
 
-The objectives of the "Phytoplankton Adventure" project include:
+1. Ensure that you have Angular 16 and Node 18 installed on your system.
 
-- Implement a robust and secure authentication system.
-- Ensure scalability and performance of the application.
+2. Clone the project repository on your local machine using the following command:
 
-### Team
-Solution made by Galactic Space Coders:
-- [Miquel Debon](https://github.com/MiquelDebon)
-- [Isis Gómez](https://github.com/Isisgldev)
-- [Montse Liz](https://github.com/montseliz)
-- [Roger Minard](https://github.com/roger-mir-min)
-- [Anna Santasusana](https://github.com/AnnaSantasusana)
-- [Anderson Zolis](https://github.com/anderson92zolis)
+        git clone https://github.com/MiquelDebon/NasaSpaceAppsChallenge.git
+
+3. Navigate to the project directory:
+
+        cd NasaSpaceAppsChallenge
+
+4. Write in your terminal to download the node modules:
+
+        npm install
+
+5. Start your application writing this command:
+
+        npm start
+
+
+
+### 🤝 Team
+Solution made by **Galactic Space Coders 🛰️**:
+- [👷 Miquel Debon](https://github.com/MiquelDebon)
+- [👩‍🔬 Isis Gómez](https://github.com/Isisgldev)
+- [👷‍ Montse Liz](https://github.com/montseliz)
+- [👨‍🎨 Roger Minard](https://github.com/roger-mir-min)
+- [👷‍ Anna Santasusana](https://github.com/AnnaSantasusana)
+- [👷 Anderson Zolis](https://github.com/anderson92zolis)

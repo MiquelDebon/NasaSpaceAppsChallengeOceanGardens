@@ -4,7 +4,6 @@ public class DuplicateUserEmailException extends RuntimeException{
     public DuplicateUserEmailException() {
         super("Duplicate user email");
     }
-
     public DuplicateUserEmailException(String message) {
         super(message);
     }

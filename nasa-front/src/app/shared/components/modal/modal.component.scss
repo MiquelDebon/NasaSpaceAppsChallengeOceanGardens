@@ -1,0 +1,87 @@
+:host{
+    display: block;
+    width: 1000px !important;
+}
+
+p{
+    width: 80%;
+    max-width: 80%;
+}
+
+/* Estils per l'overlay (fons) del modal */
+.modal-overlay {
+    position: fixed;
+    /* Posició fixa respecte a la vista del navegador */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ocupa tota l'amplada */
+    height: 100%;
+    /* Ocupa tota l'altura */
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Negre semitransparent */
+    display: flex;
+    /* Flexbox per centrar el contingut del modal */
+    justify-content: center;
+    /* Centra horitzontalment */
+    align-items: center;
+    /* Centra verticalment */
+    z-index: 1000;
+    /* Un z-index elevat per assegurar-se que estigui per sobre d'altres elements */
+}
+
+/* Estils pel contingut del modal */
+.modal-content {
+    width: 100%;
+    /* 80% de l'amplada de la vista del navegador */
+    max-width: 800px;
+    /* Però no més de 500px d'amplada */
+    padding: 20px;
+    background-color: #ffffff;
+    /* Fons blanc */
+    border-radius: 8px;
+    /* Cants arrodonits */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Una mica d'ombra per aprofunditat */
+    z-index: 1001;
+    /* Ha d'estar per sobre de l'overlay */
+}
+
+.ok-button {
+    margin-top: 20px;
+    /* Espai al cim per separar-lo del contingut del modal */
+    padding: 10px 20px;
+    /* Espai interior per a una mida còmoda */
+    font-size: 16px;
+    /* Mida de la font */
+    border: none;
+    /* Sense borda */
+    background-color: #007BFF;
+    /* Color de fons blau */
+    color: #FFFFFF;
+    /* Color de lletra blanc */
+    cursor: pointer;
+    /* Cursor en forma de mà al passar-hi per sobre */
+    border-radius: 5px;
+    /* Cants arrodonits */
+}
+
+.ok-button:hover {
+    background-color: #0056b3;
+    /* Color de fons més fosc al passar-hi per sobre */
+}
+
+/* Opcional: Si vols afegir animacions quan s'obre/tanca */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-overlay {
+    animation: fadeIn 0.3s forwards;
+}

@@ -1,0 +1,99 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:host{
+    display: block;
+    padding: 40px;
+}
+
+/* Center the login container vertically and horizontally */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Set a background color */
+}
+
+/* Style the login container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the login form */
+.login-form {
+    background-color: #F0F8FF;
+    padding: 20px;
+    margin-left: 50px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the login image */
+.login-image img {
+    
+    height: auto;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Style the image info */
+.login-image h3 p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333; /* Heading color */
+    text-align: center;
+    width: 40%;
+}
+
+.login-image  {
+    font-size: 14px;
+    color: #666; /* Text color */
+    width: 50%;
+    margin:auto;
+    height: 300%;
+
+}

@@ -1,0 +1,5 @@
+<div>HEADER</div>
+<ng-container *ngIf="user$|async as user">
+  <div>Hola, {{user.name}}</div>
+</ng-container>
+<button (click)="logout()">logout</button>

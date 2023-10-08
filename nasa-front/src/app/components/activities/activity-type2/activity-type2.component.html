@@ -1,0 +1,6 @@
+<div class="text-white text-xl mb-8">{{activity.statement}}</div>
+
+<div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let timePeriod of optionsArray" cdkDrag>{{timePeriod}}</div>
+</div>
+

@@ -1,0 +1,12 @@
+<div class="modal-overlay" (click)="onOverlayClick($event)">
+  <div class="modal-content text-center">
+      <h3 class="text-center text-xl mb-7">
+        {{title}}
+      </h3>
+      <img [src]="actionUrl" width="80%" class="block mx-auto">
+      <p class="mt-6 border rounded border-blue-600 bg-blue-600 text-white mx-auto p-3">
+        {{text}}
+      </p>
+      <button (click)="closeModal()" class="ok-button">Ok</button>
+  </div>
+</div>

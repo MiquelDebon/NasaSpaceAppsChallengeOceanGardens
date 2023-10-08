@@ -1,0 +1,114 @@
+/* register.css */
+
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the container vertically and horizontally */
+.container {
+
+    /*display: flex;*/
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5; /* Background color */
+}
+
+/* Style the registration form container */
+.registration-form {
+    
+    background-color: #F0F8FF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: auto;
+    text-align: center;
+    margin: auto ;
+    margin-left: auto;
+   
+}
+
+/* Style the form heading */
+.registration-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Heading color */
+    
+}
+
+/* Style the form fields and button */
+.registration-form form-group {
+    margin-bottom: 15px;
+    text-align: center;
+    justify-content: center;
+    
+
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Label color */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: auto;
+    padding: 10px;
+    border: 1px solid #ccc; /* Input border color */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+/* Style the images section */
+.images {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style the image */
+.images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Style the image info */
+.images h3 p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333; /* Heading color */
+    text-align: center;
+    width: 40%;
+}
+
+.images  {
+    font-size: 14px;
+    color: #666; /* Text color */
+    width: 40%;
+    margin:auto;
+    height: 300%;
+}

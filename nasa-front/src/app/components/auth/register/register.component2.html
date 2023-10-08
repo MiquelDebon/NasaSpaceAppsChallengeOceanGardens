@@ -1,0 +1,51 @@
+<div class="row g-0 justify-content-center mt-3">
+<!-- <div class="row g-0 justify-content-center mt-3" [ngClass]="{'animate__animated animate__zoomOutDown': anima}"> -->
+  <div class="col-10 col-sm-7 col-md-6 col-lg-4">
+<form class="mt-4 mt-lg-5 custom-form" [formGroup]="logForm" (ngSubmit)="submit(logForm.value)">
+    <h3 class="mb-4">Identifica't per gaudir de tots els avantages d'<span class="text-principal text-patua text-primary">ActiviCat</span></h3>
+
+  <!--Name input-->
+<div class="form-outline mb-4">
+  <input type="text" id="name" class="form-control" formControlName="name" required />
+  <label class="form-label text-grey" for="name">Your name</label>
+</div>
+
+<!--Phytoplankton name-->
+<div class="form-outline mb-4">
+  <input type="text" id="phytoplanktonName" class="form-control" formControlName="phytoplanktonName" required />
+  <label class="form-label text-grey" for="phytoplanktonName">Your phytoplankton name</label>
+</div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="email" class="form-control" formControlName="email" [class.is-invalid] = "logForm.get('email')!.invalid && logForm.get('email')!.touched"/>
+    <div *ngIf="(getEmail!.invalid && getEmail!.touched)">
+      <small *ngIf="getEmail!.hasError!('required')" class="text-danger">Escriu una adreça electrònica.</small>
+      <small *ngIf="getEmail!.hasError!('pattern')" class="text-danger">Escriu una adreça electrònica vàlida.</small>
+    </div>
+    <label class="form-label text-grey" for="email">Adreça electrònica <i class="fas fa-envelope fa-lg me-3 fa-fw text-grey"></i></label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" id="password" class="form-control" formControlName="password" [class.is-invalid] = "logForm.get('password')!.invalid && logForm.get('password')!.touched"/>
+    <div *ngIf="(getPassword!.invalid && getPassword!.touched) || getPassword!.dirty">
+    <small *ngIf="logForm.get('password')!.hasError('required')" class="text-danger">Escriu una contrasenya</small></div>
+    <label class="form-label text-grey" for="password">Contrasenya <i class="fas fa-password fa-lg me-3 fa-fw text-grey"></i></label>
+  </div>
+
+  <div class="mt-5">
+  <div> <span *ngIf="userNotFoundError" class="text-danger text-min-h">Adreça electrònica o contrasenya incorrecta.</span></div>
+
+    <div>
+      <!-- Simple link -->
+      <a class="text-grey hover cursor-pointer text-underline">Has oblidat la contrasenya?</a>
+    </div>
+
+  <!-- Submit button -->
+  <button type="submit" [disabled]="!logForm.valid" class="btn btn-change btn-block mb-4 w-100">Identifica't</button>
+
+  </div>
+</form>
+</div>
+</div>

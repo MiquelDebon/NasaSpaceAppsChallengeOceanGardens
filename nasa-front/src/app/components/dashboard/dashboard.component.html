@@ -1,0 +1,32 @@
+<div class="actions basis-2/4">
+    <h2 class="text-2xl">WELCOME</h2>
+    <p class="text-lg">What do you want to do?</p>
+    <div class="buttons">
+        <div class="flex w-5/6 gap-5 mb-5">
+            <button class="bg-green-500" (click)="navigateToActivity(action1)">Photosynthesis</button>
+            <button class="bg-red-400" (click)="navigateToActivity(action2)">Reproduce</button>
+        </div>
+        <div class="flex w-5/6 gap-5">
+            <button class="bg-blue-600" (click)="navigateToActivity(action3)">Migrate</button>
+            <button class="bg-yellow-400" (click)="navigateToActivity(action4)">Group</button>
+        </div>
+    </div>
+</div>
+
+<div class="figura basis-2/4 ms-40">
+    <div class="phytoto-frame w-6/6" *ngIf="user">
+        <img [src]="phytoImg">
+    </div>
+    <div class="barres mt-8 flex">
+        <div class="">
+            <label for="file" class="block me-3">HEALTH: </label>
+            <label for="file" class="block me-3">CO2 CONSUMED: </label>
+        </div>
+        <div class="">
+            <progress id="file" [value]="user.phytoplankton.health" max="100"> </progress> {{user.phytoplankton.health}}
+            <div class="block">
+                <progress id="file" [value]="user.phytoplankton.co2Consumed" max="100"> </progress> {{user.phytoplankton.co2Consumed}}
+            </div>
+        </div>
+    </div>
+</div>

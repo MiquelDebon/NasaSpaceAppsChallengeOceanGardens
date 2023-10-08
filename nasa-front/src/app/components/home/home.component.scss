@@ -1,0 +1,21 @@
+.portada{
+    height: 38rem;
+}
+
+.portada-text{
+    /* right: 50%;
+    transform: translateX(-50%); */
+}
+
+.tarja{
+    min-height: 300px;
+    background-size: contain;
+        background-image: url("../../../assets/images/home/regular-table-bottom.png");
+        background-repeat: no-repeat;
+        background-position-y:bottom;
+}
+
+
+.boto-sec{
+    border-color: blue !important;
+}

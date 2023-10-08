@@ -1,0 +1,12 @@
+:host{
+    display: flex;
+    height: 800px;
+    padding-top: 140px;
+    padding-right: 50px;
+    padding-left: 50px;
+    background-image: url("../../../../assets/images/home/slider-left-dec.png");
+    background-repeat: no-repeat;
+    // background-position-y: 50px;
+    background-position-x: -50px;
+    background-size:contain;
+}

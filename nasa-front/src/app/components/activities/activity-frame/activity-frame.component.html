@@ -1,0 +1,19 @@
+<div class="basis-2/4">
+  <ng-container *ngIf="currentActivity.type == activityType1">
+    <app-activity-type1 [activity]="currentActivity"></app-activity-type1>
+  </ng-container>
+  
+  <ng-container *ngIf="currentActivity.type == activityType2">
+    <app-activity-type2 [activity]="currentActivity"></app-activity-type2>
+  </ng-container>
+  
+  <ng-container *ngIf="currentActivity.type == activityType3">
+    <app-activity-type3 [activity]="currentActivity"></app-activity-type3>
+  </ng-container>
+</div>
+
+<div class="figura basis-2/4 ms-40">
+    <div class="phytoto-frame w-6/6">
+        <img src="../../../../assets/images/normal.gif">
+    </div>
+</div>

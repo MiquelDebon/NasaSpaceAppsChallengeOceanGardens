@@ -1,0 +1,16 @@
+<nav class="absolute bg-white z-10 font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-1 px-6 shadow  w-full text-blue-800">
+  <div class="mb-2 sm:mb-0 ms-8">
+        <img routerLink="/home" src="/assets/images/logo.png" alt="" width=10% height="100%">
+  </div>
+  <div class="dreta basis-1/4 flex align-middle">
+    <div class="flex items-center">
+      <a routerLink="/home" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Home</a>
+      <a routerLink="/dashboard" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">My Phyto</a>
+      <button routerLink="/login" *ngIf="user$|async" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Logout</button>
+    </div>
+  </div>
+</nav>
+<app-main></app-main>
+<app-footer></app-footer>
+
+<app-modal *ngIf="isModalVisible" [title]="modalTitle" [text]="modalText" [actionUrl]="modalPhytoImg"></app-modal>

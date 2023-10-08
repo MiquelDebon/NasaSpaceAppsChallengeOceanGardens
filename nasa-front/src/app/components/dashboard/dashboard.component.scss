@@ -1,0 +1,26 @@
+:host{
+    display: flex;
+    height: 800px;
+    padding-top: 140px;
+    padding-right: 50px;
+    padding-left: 50px;
+    background-image: url("../../../assets/images/home/slider-left-dec.png");
+    background-repeat: no-repeat;
+    // background-position-y: 50px;
+    background-position-x: -50px;
+    background-size:contain;
+}
+
+.buttons{
+    margin-top: 10%;
+}
+
+button{
+    flex-grow: 1;
+    flex-basis: 100px;
+    border-radius: 50px;
+    padding: 20px 40px;
+    &:hover{
+        opacity: 0.9;
+    }
+}

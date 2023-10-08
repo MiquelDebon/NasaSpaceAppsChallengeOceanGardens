@@ -1,7 +1,8 @@
 # 🌊 The Phytoplankton Adventure
-<p float="center">
-   <img src="NasaSpaceAppsChallenge/src/main/resources/static/phyto.gif" width="400" />
-</p>
+
+<img src="NasaSpaceAppsChallenge/src/main/resources/static/phyto.gif" width="400" />
+
+[Phyto.mp4](Phyto.mp4)
 
 ### 🌎 Context
 

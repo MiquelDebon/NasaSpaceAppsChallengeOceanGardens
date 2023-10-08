@@ -1,4 +1,4 @@
-# 🌊 La Aventura del Fitoplancton
+# 🌊 The Phytoplankton Adventure
 
 ### 🌎 Context
 

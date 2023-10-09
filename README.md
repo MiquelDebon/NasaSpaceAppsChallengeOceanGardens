@@ -1,4 +1,5 @@
 # 🌊 The Phytoplankton Adventure
+## 🏅 NASA SpaceApps Challenge Winner for the Barcelona Event (2023) 😊
 
 https://github.com/MiquelDebon/NasaSpaceAppsChallengeOceanGardens/assets/118931300/2352d144-80ba-42fa-8bf9-429d857033c4
 

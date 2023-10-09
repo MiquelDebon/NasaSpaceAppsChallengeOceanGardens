@@ -77,7 +77,7 @@ To get started with the project, follow the steps below:
 
 5. Start your application writing this command:
 
-        npm start
+        npm start (or "ng serve" if you have Angular CLI installed)
 
 
 
@@ -86,6 +86,6 @@ Solution made by **Galactic Space Coders 🛰️**:
 - [👷‍♂️ Miquel Debon](https://github.com/MiquelDebon)
 - [👩‍🔬 Isis Gómez](https://github.com/Isisgldev)
 - [👷‍♀️ Montse Liz](https://github.com/montseliz)
-- [👨‍🎨 Roger Minard](https://github.com/roger-mir-min)
+- [👨‍🎨 Roger Miret](https://github.com/roger-mir-min)
 - [👷‍♀️ Anna Santasusana](https://github.com/AnnaSantasusana)
 - [👷‍♂️ Anderson Zolis](https://github.com/anderson92zolis)

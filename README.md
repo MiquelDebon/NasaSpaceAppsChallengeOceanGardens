@@ -29,8 +29,9 @@ The project has been developed using the following technologies:
 - TypeScript
 - JavaScript
 - HTML
-- CSS
+- CSS / SCSS
 - Tailwind
+- Angular Material (DragDropModule)
 
 
 ### 🚀 1 - Installation Backend
